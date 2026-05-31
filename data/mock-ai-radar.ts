@@ -1,0 +1,10 @@
+import type { AIRadarItem } from "@/types";
+
+export const aiRadarItems: AIRadarItem[] = [
+  { id: "gpt", productName: "GPT", updateOrMechanism: "Tool-using assistants with structured response modes.", innovation: "Combines language interface with task execution and context management.", lessonForDataPilot: "Make analysis workflows inspectable and action-oriented.", featureOpportunity: "Guided data-agent runs with visible product-level trace." },
+  { id: "claude", productName: "Claude", updateOrMechanism: "Artifact-centric collaboration and long-context synthesis.", innovation: "Turns conversation into reviewable working artifacts.", lessonForDataPilot: "Data answers should become reusable decision artifacts.", featureOpportunity: "Auto-generate PRD, postmortem, and review summaries from analysis." },
+  { id: "openclaw", productName: "OpenClaw", updateOrMechanism: "Open agent skill orchestration patterns.", innovation: "Makes skills composable and auditable.", lessonForDataPilot: "Separate skill definition, run history, and evaluation.", featureOpportunity: "Skill marketplace with PM-owned success metrics." },
+  { id: "gemini", productName: "Gemini", updateOrMechanism: "Multimodal workspace integration.", innovation: "Brings AI into documents, sheets, and operations flows.", lessonForDataPilot: "Meet users where their data review already happens.", featureOpportunity: "Export analysis reviews into docs and planning templates." },
+  { id: "perplexity", productName: "Perplexity", updateOrMechanism: "Answer-first research with citations.", innovation: "Builds trust through source visibility.", lessonForDataPilot: "Every metric answer needs source, definition, and confidence.", featureOpportunity: "Metric citation panel for registry definitions and SQL lineage." },
+  { id: "cursor", productName: "Cursor", updateOrMechanism: "Agentic editing with reviewable diffs.", innovation: "Keeps high-agency work bounded by human review.", lessonForDataPilot: "Analysts should approve risky metric changes before rollout.", featureOpportunity: "Metric definition diff and approval workflow." }
+];
