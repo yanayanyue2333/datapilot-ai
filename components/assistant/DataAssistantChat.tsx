@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Bot, Loader2, Send, UserRound } from "lucide-react";
 import { analyzeDataQuestion } from "@/lib/ai/dataAssistantEngine";
+import { useMetricRegistryStore } from "@/lib/metrics/metricRegistryStore";
 import type { DataAssistantResult } from "@/types";
 import { AnalysisTrace } from "@/components/assistant/AnalysisTrace";
 import { HonestRefusalCard } from "@/components/assistant/HonestRefusalCard";
@@ -11,6 +12,7 @@ import { Card } from "@/components/ui/card";
 const suggestedQuestions = ["为什么本月利润下降？", "本周 GMV 为什么下降？", "哪个渠道 ROI 最高？", "老用户是不是不太回来了？"];
 
 export function DataAssistantChat() {
+  const definitions = useMetricRegistryStore((state) => state.definitions);
   const [input, setInput] = useState("为什么本月利润下降？");
   const [submittedQuestion, setSubmittedQuestion] = useState("");
   const [result, setResult] = useState<DataAssistantResult | null>(null);
@@ -29,7 +31,7 @@ export function DataAssistantChat() {
     setIsThinking(true);
 
     window.setTimeout(() => {
-      setResult(analyzeDataQuestion(trimmed));
+      setResult(analyzeDataQuestion(trimmed, definitions));
       setIsThinking(false);
     }, 650);
   }
@@ -62,10 +64,41 @@ export function DataAssistantChat() {
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">Governed Mock Answer</p>
         <h2 className="mt-2 text-lg font-semibold text-slate-950">{result.mockAnswer.title}</h2>
         <p className="mt-3 text-sm leading-6 text-slate-600">{result.mockAnswer.summary}</p>
+        {result.mockAnswer.formula ? (
+          <div className="mt-4 rounded-md bg-slate-50 p-4">
+            <h3 className="text-sm font-semibold text-slate-950">Metric definition used</h3>
+            <code className="mt-2 block rounded bg-white p-2 text-xs text-slate-700">{result.mockAnswer.formula}</code>
+            {result.mockAnswer.caveat ? <p className="mt-2 text-sm leading-6 text-amber-700">{result.mockAnswer.caveat}</p> : null}
+          </div>
+        ) : null}
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {result.mockAnswer.supportingSignals.map((signal) => (
             <div key={signal} className="rounded-md bg-slate-50 p-3 text-sm text-slate-600">{signal}</div>
           ))}
+        </div>
+        {result.mockAnswer.drivers ? (
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <div className="rounded-md bg-slate-50 p-4">
+              <h3 className="text-sm font-semibold text-slate-950">Possible drivers</h3>
+              <ul className="mt-3 space-y-2">
+                {result.mockAnswer.drivers.map((driver) => (
+                  <li key={driver} className="text-sm text-slate-600">{driver}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-md bg-slate-50 p-4">
+              <h3 className="text-sm font-semibold text-slate-950">Recommendations</h3>
+              <ul className="mt-3 space-y-2">
+                {result.mockAnswer.recommendations?.map((recommendation) => (
+                  <li key={recommendation} className="text-sm text-slate-600">{recommendation}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ) : null}
+        <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-600">
+          <span className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-800">Confidence {Math.round(result.mockAnswer.confidence * 100)}%</span>
+          {result.mockAnswer.reportingNote ? <span>{result.mockAnswer.reportingNote}</span> : null}
         </div>
       </Card>
     );

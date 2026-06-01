@@ -5,6 +5,7 @@ export type SkillStatus = "stable" | "beta" | "experimental";
 export interface MetricDefinition {
   id: string;
   name: string;
+  key?: string;
   displayName: string;
   description: string;
   formula: string;
@@ -12,6 +13,9 @@ export interface MetricDefinition {
   grain: "daily" | "weekly" | "monthly" | "event" | "user";
   dimensions: string[];
   dataSource: string;
+  dataSources?: string[];
+  aliases?: string[];
+  caveat?: string;
   status: MetricStatus;
   lastReviewedAt: string;
 }
@@ -19,8 +23,13 @@ export interface MetricDefinition {
 export interface MetricRequest {
   id: string;
   metricName: string;
+  key?: string;
+  displayName?: string;
   requester: string;
+  requestedBy?: string;
   businessQuestion: string;
+  sourceQuestion?: string;
+  reason?: string;
   proposedDefinition?: string;
   status: ReviewStatus;
   createdAt: string;
@@ -91,6 +100,11 @@ export interface DataAssistantResult {
     title: string;
     summary: string;
     supportingSignals: string[];
+    formula?: string;
+    caveat?: string;
+    drivers?: string[];
+    recommendations?: string[];
+    reportingNote?: string;
     confidence: number;
   };
 }

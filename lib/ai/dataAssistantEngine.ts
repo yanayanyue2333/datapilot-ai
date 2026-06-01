@@ -1,4 +1,4 @@
-import type { AIAnswer, AnalysisTraceStep, DataAssistantResult, DataQuestion, HonestRefusal, QuestionIntent } from "@/types";
+import type { AIAnswer, AnalysisTraceStep, DataAssistantResult, DataQuestion, HonestRefusal, MetricDefinition, QuestionIntent } from "@/types";
 import { findMetricDefinition } from "@/lib/metrics/metricRegistry";
 
 const alternativeMetrics = ["GMV", "revenue", "refund_amount", "marketing_cost", "orders"];
@@ -71,6 +71,7 @@ export function buildAnalysisTrace(intent: QuestionIntent, requiredMetric: strin
   return [
     { id: "intent", label: `识别问题意图：${intent.label}`, status: "completed", productVisibleReason: intent.description },
     { id: "registry-search", label: "检索 Metric Registry", status: "completed", productVisibleReason: `已找到 ${requiredMetric} 的指标定义。` },
+    { id: "definition-check", label: "确认指标口径和 Caveat", status: "completed", productVisibleReason: "使用已审批定义生成受治理分析，并保留对外披露前的人工确认要求。" },
     { id: "mock-analysis", label: "生成受治理的模拟分析", status: "completed", productVisibleReason: "当前 MVP 使用 mock 数据展示可回答问题的结果形态。" }
   ];
 }
@@ -88,10 +89,19 @@ export function generateHonestRefusal(requiredMetric: string, alternatives = alt
   };
 }
 
-export function analyzeDataQuestion(question: string): DataAssistantResult {
+function findDefinition(metricName: string, definitions?: MetricDefinition[]) {
+  if (!definitions) return findMetricDefinition(metricName);
+  const normalized = metricName.toLowerCase();
+  return definitions.find((metric) => {
+    const candidates = [metric.id, metric.name, metric.key, metric.displayName, ...(metric.aliases ?? [])].filter(Boolean).map((value) => String(value).toLowerCase());
+    return candidates.includes(normalized);
+  });
+}
+
+export function analyzeDataQuestion(question: string, definitions?: MetricDefinition[]): DataAssistantResult {
   const intent = identifyQuestionIntent(question);
   const requiredMetric = identifyRequiredMetric(question);
-  const metricDefinition = findMetricDefinition(requiredMetric);
+  const metricDefinition = findDefinition(requiredMetric, definitions);
   const trace = buildAnalysisTrace(intent, requiredMetric, Boolean(metricDefinition));
 
   if (!metricDefinition) {
@@ -103,6 +113,41 @@ export function analyzeDataQuestion(question: string): DataAssistantResult {
       trace,
       answerType: "honest_refusal",
       refusal: generateHonestRefusal(requiredMetric)
+    };
+  }
+
+  if (requiredMetric === "profit") {
+    return {
+      question,
+      intent,
+      requiredMetric,
+      availableAlternativeMetrics: [],
+      trace,
+      answerType: "analysis",
+      mockAnswer: {
+        title: "利润下降归因分析",
+        summary: "按当前经营毛利口径，本月利润环比下降 8.6%。",
+        formula: metricDefinition.formula,
+        caveat: metricDefinition.caveat,
+        supportingSignals: [
+          `Metric definition used: ${metricDefinition.displayName}`,
+          `Formula: ${metricDefinition.formula}`,
+          "Scope: operating gross profit for internal product analysis"
+        ],
+        drivers: [
+          "marketing_cost increased 14.2%",
+          "refund_amount increased 6.8%",
+          "revenue only increased 1.9%",
+          "fulfillment_cost increased 4.5%"
+        ],
+        recommendations: [
+          "review paid channel ROI",
+          "segment refund reasons",
+          "check fulfillment cost increase"
+        ],
+        reportingNote: "A finance analyst should confirm this definition and result before external reporting.",
+        confidence: 0.78
+      }
     };
   }
 

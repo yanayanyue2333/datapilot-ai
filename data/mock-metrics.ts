@@ -1,4 +1,4 @@
-import type { MetricDefinition, MetricRequest } from "@/types";
+import type { MetricDefinition } from "@/types";
 
 export const metricDefinitions: MetricDefinition[] = [
   { id: "gmv", name: "gmv", displayName: "GMV", description: "Total gross merchandise value before refunds.", formula: "sum(order_amount)", owner: "Data Product", grain: "daily", dimensions: ["channel", "city", "user_segment"], dataSource: "mart_orders", status: "active", lastReviewedAt: "2026-05-10" },
@@ -11,6 +11,4 @@ export const metricDefinitions: MetricDefinition[] = [
   { id: "roi", name: "roi", displayName: "ROI", description: "Incremental revenue divided by marketing spend.", formula: "incremental_revenue / marketing_spend", owner: "Growth Ops", grain: "daily", dimensions: ["channel", "campaign"], dataSource: "mart_campaign_roi", status: "active", lastReviewedAt: "2026-05-15" }
 ];
 
-export const metricRequests: MetricRequest[] = [
-  { id: "mr-profit", metricName: "profit", requester: "PM Intern", businessQuestion: "Why did profit decline this month?", proposedDefinition: "Revenue minus refund amount minus marketing cost.", status: "pending", createdAt: "2026-05-28" }
-];
+export const metricRequests = [];
