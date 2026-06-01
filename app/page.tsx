@@ -1,4 +1,4 @@
-import { ArrowRight, Bot, ClipboardCheck, LibraryBig, MessageSquareWarning, Radar, Workflow } from "lucide-react";
+import { ArrowRight, Bot, ClipboardCheck, Gauge, LibraryBig, MessageSquareWarning, Radar, Workflow } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -9,6 +9,15 @@ const mechanisms = [
   { title: "Honest Refusal", body: "Blocks answers when required metrics are missing or ambiguous.", icon: MessageSquareWarning },
   { title: "Analyst Review", body: "Routes risky findings to human validation before decision use.", icon: ClipboardCheck },
   { title: "Product Ops Feedback Loop", body: "Learns from false rejections, failures, and satisfaction signals.", icon: Radar }
+];
+
+const demoFlow = [
+  { title: "Honest Refusal Demo", href: "/assistant", click: "Ask: 为什么本月利润下降？", proves: "The assistant refuses undefined profit analysis.", matters: "Shows responsible AI behavior instead of hallucinated BI.", icon: MessageSquareWarning },
+  { title: "Metric Governance Loop", href: "/metric-registry", click: "Approve profit in /review, then inspect registry.", proves: "A missing metric becomes a governed asset.", matters: "Connects user demand to data team approval.", icon: LibraryBig },
+  { title: "Daily Triage Workflow", href: "/daily-triage", click: "Click 继续拆解 on an anomaly card.", proves: "Anomaly review becomes guided action.", matters: "Frames BI as workflow, not static reporting.", icon: Gauge },
+  { title: "Product Ops Feedback Loop", href: "/ops", click: "Review the False Rejection Log.", proves: "User corrections improve semantic mappings.", matters: "Demonstrates post-launch AI product iteration.", icon: Radar },
+  { title: "Analyst Review Safety Net", href: "/review", click: "Inspect the GMV correction story.", proves: "Human review catches SQL scope and abnormal date risk.", matters: "Reduces risky AI analysis before decisions.", icon: ClipboardCheck },
+  { title: "Portfolio Case Study", href: "/case-study", click: "Read the JD Fit section.", proves: "The project maps to AI data PM responsibilities.", matters: "Makes interview storytelling explicit.", icon: Bot }
 ];
 
 export default function HomePage() {
@@ -47,6 +56,25 @@ export default function HomePage() {
             <p className="mt-2 text-sm leading-6 text-slate-600">{item.body}</p>
           </Card>
         ))}
+      </section>
+      <section>
+        <div className="mb-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">Recommended Demo Flow</p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">Six entry points for a recruiter or interviewer walkthrough</h2>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {demoFlow.map((item) => (
+            <a key={item.title} href={item.href}>
+              <Card className="h-full transition hover:border-blue-300 hover:shadow-soft">
+                <item.icon className="h-5 w-5 text-blue-600" />
+                <h3 className="mt-4 text-base font-semibold text-slate-950">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600"><span className="font-medium text-slate-950">What to click:</span> {item.click}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600"><span className="font-medium text-slate-950">What it proves:</span> {item.proves}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600"><span className="font-medium text-slate-950">Why it matters:</span> {item.matters}</p>
+              </Card>
+            </a>
+          ))}
+        </div>
       </section>
     </div>
   );
