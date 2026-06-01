@@ -66,6 +66,35 @@ export interface AIAnswer {
   suggestedNextActions: string[];
 }
 
+export interface QuestionIntent {
+  id: string;
+  label: string;
+  description: string;
+}
+
+export interface HonestRefusal {
+  reason: string;
+  missingMetric: string;
+  alternativeAnalysis: string[];
+  requiredConfirmation: string;
+}
+
+export interface DataAssistantResult {
+  question: string;
+  intent: QuestionIntent;
+  requiredMetric: string;
+  availableAlternativeMetrics: string[];
+  trace: AnalysisTraceStep[];
+  answerType: "analysis" | "honest_refusal";
+  refusal?: HonestRefusal;
+  mockAnswer?: {
+    title: string;
+    summary: string;
+    supportingSignals: string[];
+    confidence: number;
+  };
+}
+
 export interface AgentSkill {
   id: string;
   name: string;
