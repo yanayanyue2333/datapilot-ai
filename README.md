@@ -21,6 +21,24 @@ DataPilot AI does not invent analysis when the product lacks trusted definitions
 - Analyst review queue for risky or misleading findings
 - Product operations feedback loop for false rejections and quality metrics
 
+## Product Mechanism Highlights
+
+### Daily Triage
+
+DataPilot AI treats daily business review as an action workflow, not a static dashboard. The flow moves from anomaly detection to drilldown, cause hypothesis, recommendation, and follow-up task creation. This demonstrates how an AI data assistant can guide PMs through ambiguous business movement instead of only displaying KPI cards.
+
+### False Rejection Learning Loop
+
+The Product Ops dashboard shows how user corrections become semantic mapping updates. When users say things like "单量走得有点疲" or "投放是不是亏了", the product learns to map business language to orders decline analysis and channel ROI analysis. This improves Agent Skill routing and business-language understanding over time.
+
+### Analyst Review Safety Mechanism
+
+The Analyst Review queue demonstrates how human review catches SQL scope mistakes, abnormal event dates, metric ambiguity, and sample bias. The GMV review story shows an AI analysis overstating growth because it included the 6.18 promotion day, then revises the conclusion after analyst correction.
+
+### Job Description Fit
+
+These mechanisms support AI data assistant iteration, Agent Skill design, user insight synthesis, product operations, and cross-functional review with data teams. They show the product manager can design beyond a chat UI: defining governance loops, evaluation signals, review workflows, and operational learning mechanisms.
+
 ## Page Overview
 
 - `/`: portfolio landing page and mechanism overview
@@ -83,3 +101,6 @@ npm run build
 - Designed a responsible AI data assistant that refuses undefined metric analysis instead of hallucinating business conclusions.
 - Built an Agent Skill product foundation with metric governance, human review, product operations feedback, and portfolio-ready UI.
 - Modeled realistic AI data product domain entities, including Metric Registry, analysis trace, analyst review, skill evaluation, and false rejection logs.
+- Built a Daily Triage workflow that turns anomalies into drilldowns, hypotheses, recommendations, and follow-up tasks.
+- Designed a false rejection learning loop where user corrections update semantic mappings and improve Agent Skill routing.
+- Created an Analyst Review safety mechanism that catches SQL scope mistakes and abnormal-date bias before AI analysis informs product decisions.
