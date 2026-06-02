@@ -155,6 +155,17 @@ The project runs in mock mode by default.
 5. Run command: `npm run build`
 6. Output is handled by Next.js automatically.
 
+The repository also includes `vercel.json` with the same deployment defaults:
+
+```json
+{
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next"
+}
+```
+
 ## Resume Bullet Points
 
 - Designed a responsible AI data assistant that refuses undefined metric analysis instead of hallucinating business conclusions.
