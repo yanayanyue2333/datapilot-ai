@@ -4,7 +4,12 @@ DataPilot AI is a responsible AI data assistant that knows when not to answer, t
 
 ## Live Demo
 
-Live demo: _Add Vercel URL here after deployment._
+- Live demo: [https://datapilot-ai-dusky.vercel.app](https://datapilot-ai-dusky.vercel.app)
+- AI Radar page: [https://datapilot-ai-dusky.vercel.app/ai-radar](https://datapilot-ai-dusky.vercel.app/ai-radar)
+
+## GitHub Repository
+
+GitHub repo: [https://github.com/yanayanyue2333/datapilot-ai](https://github.com/yanayanyue2333/datapilot-ai)
 
 ## Screenshots
 
@@ -148,12 +153,12 @@ The project runs in mock mode by default.
 
 ## Vercel Deployment
 
-1. Push the repository to GitHub.
-2. Import the repository in Vercel.
-3. Use the default Next.js settings.
-4. No environment variables are required for the current MVP.
-5. Run command: `npm run build`
-6. Output is handled by Next.js automatically.
+The project is deployed on Vercel:
+
+- Production URL: [https://datapilot-ai-dusky.vercel.app](https://datapilot-ai-dusky.vercel.app)
+- GitHub source: [https://github.com/yanayanyue2333/datapilot-ai](https://github.com/yanayanyue2333/datapilot-ai)
+
+No environment variables are required for the current MVP.
 
 The repository also includes `vercel.json` with the same deployment defaults:
 
