@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BarChart3, Bot, ClipboardCheck, Gauge, Home, LibraryBig, Radar, Settings2, ShieldCheck, Sparkles } from "lucide-react";
+import { BarChart3, Bot, ClipboardCheck, Gauge, Home, LibraryBig, Radar, Settings2, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -10,6 +10,7 @@ const navItems = [
   { href: "/metric-registry", label: "Metric Registry", icon: LibraryBig },
   { href: "/review", label: "Review", icon: ClipboardCheck },
   { href: "/ops", label: "Ops", icon: BarChart3 },
+  { href: "/impact", label: "Impact", icon: TrendingUp },
   { href: "/ai-radar", label: "AI Radar", icon: Radar },
   { href: "/prd", label: "PRD", icon: Settings2 },
   { href: "/case-study", label: "Case Study", icon: ShieldCheck }

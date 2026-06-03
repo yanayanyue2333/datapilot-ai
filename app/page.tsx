@@ -1,4 +1,4 @@
-import { ArrowRight, Bot, ClipboardCheck, Gauge, LibraryBig, MessageSquareWarning, Radar, Workflow } from "lucide-react";
+import { ArrowRight, Bot, ClipboardCheck, Gauge, LibraryBig, MessageSquareWarning, Radar, TrendingUp, Workflow } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -17,6 +17,7 @@ const demoFlow = [
   { title: "Daily Triage Workflow", href: "/daily-triage", click: "Click 继续拆解 on an anomaly card.", proves: "Anomaly review becomes guided action.", matters: "Frames BI as workflow, not static reporting.", icon: Gauge },
   { title: "Product Ops Feedback Loop", href: "/ops", click: "Review the False Rejection Log.", proves: "User corrections improve semantic mappings.", matters: "Demonstrates post-launch AI product iteration.", icon: Radar },
   { title: "Analyst Review Safety Net", href: "/review", click: "Inspect the GMV correction story.", proves: "Human review catches SQL scope and abnormal date risk.", matters: "Reduces risky AI analysis before decisions.", icon: ClipboardCheck },
+  { title: "Business Impact Simulation", href: "/impact", click: "Review mock before/after success metrics.", proves: "Shows how the product defines success metrics and connects AI product mechanisms to business outcomes.", matters: "Makes product impact evaluation explicit for interviews.", icon: TrendingUp },
   { title: "Portfolio Case Study", href: "/case-study", click: "Read the JD Fit section.", proves: "The project maps to AI data PM responsibilities.", matters: "Makes interview storytelling explicit.", icon: Bot }
 ];
 
@@ -29,7 +30,7 @@ export default function HomePage() {
           <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-slate-950">DataPilot AI</h1>
           <p className="mt-5 max-w-2xl text-xl leading-8 text-slate-600">A responsible AI data assistant that knows when not to answer.</p>
           <p className="mt-5 max-w-2xl text-sm leading-6 text-slate-600">
-            Built for AI Data Assistant PM, Agent Skill PM, Data Product PM, and product operations internship cases. The product demonstrates metric governance, skill design, analyst review, and post-launch learning.
+            Built for AI Data Assistant PM, Agent Skill PM, Data Product PM, and product operations internship cases. The product demonstrates metric governance, skill design, analyst review, post-launch learning, and mock impact evaluation.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/assistant">Try Assistant <ArrowRight className="ml-2 h-4 w-4" /></ButtonLink>
@@ -60,7 +61,7 @@ export default function HomePage() {
       <section>
         <div className="mb-5">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">Recommended Demo Flow</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">Six entry points for a recruiter or interviewer walkthrough</h2>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">Seven entry points for a recruiter or interviewer walkthrough</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {demoFlow.map((item) => (

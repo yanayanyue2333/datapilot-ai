@@ -5,6 +5,7 @@ DataPilot AI is a responsible AI data assistant that knows when not to answer, t
 ## Live Demo
 
 - Live demo: [https://datapilot-ai-dusky.vercel.app](https://datapilot-ai-dusky.vercel.app)
+- Impact Simulation: [https://datapilot-ai-dusky.vercel.app/impact](https://datapilot-ai-dusky.vercel.app/impact)
 - AI Radar page: [https://datapilot-ai-dusky.vercel.app/ai-radar](https://datapilot-ai-dusky.vercel.app/ai-radar)
 
 ## GitHub Repository
@@ -22,8 +23,7 @@ Screenshots: _Add portfolio screenshots here after capturing the flows in `SCREE
 - Tailwind CSS
 - shadcn-style local UI primitives
 - Zustand with localStorage persistence
-- Recharts-ready mock data
-- Framer Motion-ready frontend foundation
+- Recharts for mock impact charts
 - Mock mode by default, no backend required
 
 ## Best Demo Path
@@ -34,7 +34,7 @@ Screenshots: _Add portfolio screenshots here after capturing the flows in `SCREE
 4. Approve it in `/review`.
 5. Confirm it appears in `/metric-registry`.
 6. Ask the same question again in `/assistant` and show the governed answer.
-7. Open `/daily-triage`, `/ops`, `/review`, and `/case-study` for the portfolio highlights.
+7. Open `/daily-triage`, `/ops`, `/review`, `/impact`, and `/case-study` for the portfolio highlights.
 
 For a scripted walkthrough, see `DEMO_GUIDE.md`.
 
@@ -56,6 +56,7 @@ This project is tailored for:
 - Product Ops dashboard with False Rejection Log and semantic mapping updates
 - Analyst Review safety mechanism for SQL scope, abnormal dates, and business caveats
 - Agent Skill Gallery with usage, satisfaction, failure rate, and iteration metadata
+- Impact Simulation page with clearly labeled mock before/after success metrics
 
 ## Local Run Commands
 
@@ -75,6 +76,7 @@ DataPilot AI is not a generic chatbot or a static BI dashboard.
 - It uses analyst review for risky data analysis.
 - It learns from false rejections and user corrections.
 - It frames BI as a workflow, not a static dashboard.
+- It defines launch success metrics through a mock Impact Simulation rather than claiming real results.
 
 ## Core Product Mechanisms
 
@@ -84,6 +86,7 @@ DataPilot AI is not a generic chatbot or a static BI dashboard.
 - Agent Skill Gallery for repeatable product analytics workflows
 - Analyst review queue for risky or misleading findings
 - Product operations feedback loop for false rejections and quality metrics
+- Impact Simulation for launch success metric storytelling
 
 ## Product Mechanism Highlights
 
@@ -99,9 +102,15 @@ The Product Ops dashboard shows how user corrections become semantic mapping upd
 
 The Analyst Review queue demonstrates how human review catches SQL scope mistakes, abnormal event dates, metric ambiguity, and sample bias. The GMV review story shows an AI analysis overstating growth because it included the 6.18 promotion day, then revises the conclusion after analyst correction.
 
+### Impact Simulation
+
+The Impact Simulation page uses clearly labeled mock data to show how DataPilot AI would evaluate launch success. The metrics were chosen because they map directly to product mechanisms: analysis time and GMV diagnosis time map to Daily Triage, ROI and CAC map to Agent Skills and growth operations, metric definition cycle time maps to Metric Registry and Analyst Review, and answer adoption maps to honest refusal, caveats, and product-level trace.
+
+These numbers are mock simulation data for portfolio storytelling, not real business results. After a real launch, the same framework would be measured through product events, skill run logs, analyst review timestamps, semantic mapping updates, and business KPI monitoring.
+
 ### Job Description Fit
 
-These mechanisms support AI data assistant iteration, Agent Skill design, user insight synthesis, product operations, and cross-functional review with data teams. They show the product manager can design beyond a chat UI: defining governance loops, evaluation signals, review workflows, and operational learning mechanisms.
+These mechanisms support AI data assistant iteration, Agent Skill design, user insight synthesis, product operations, cross-functional review with data teams, and post-launch business impact evaluation. They show the product manager can design beyond a chat UI: defining governance loops, evaluation signals, review workflows, operational learning mechanisms, and success metrics.
 
 ## Page Overview
 
@@ -113,6 +122,7 @@ These mechanisms support AI data assistant iteration, Agent Skill design, user i
 - `/metric-registry`: governed metric definitions and approved profit state
 - `/review`: metric approval loop and GMV correction story
 - `/ops`: product operations dashboard and false rejection learning loop
+- `/impact`: mock impact simulation and success metric framework
 - `/ai-radar`: AI product research notes
 - `/prd`: PRD workspace placeholder
 - `/case-study`: portfolio narrative and JD fit
@@ -179,3 +189,4 @@ The repository also includes `vercel.json` with the same deployment defaults:
 - Built a Daily Triage workflow that turns anomalies into drilldowns, hypotheses, recommendations, and follow-up tasks.
 - Designed a false rejection learning loop where user corrections update semantic mappings and improve Agent Skill routing.
 - Created an Analyst Review safety mechanism that catches SQL scope mistakes and abnormal-date bias before AI analysis informs product decisions.
+- 设计 Impact Simulation 上线效果模拟模块，围绕 GMV 异常定位、渠道 ROI、CAC、分析耗时、指标口径确认周期等指标建立产品成功指标体系，模拟评估 AI 数据助手对业务决策效率和增长运营的潜在影响。

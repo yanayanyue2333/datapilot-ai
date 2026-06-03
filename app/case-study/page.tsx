@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 export default function CaseStudyPage() {
   return (
     <>
-      <PageHeader title="Case Study" description="A portfolio narrative showing how DataPilot AI solves a realistic AI data assistant problem with metric governance and human validation." />
+      <PageHeader title="Case Study" description="A portfolio narrative showing how DataPilot AI solves a realistic AI data assistant problem with metric governance, human validation, product operations, and impact evaluation." />
       <div className="space-y-6">
         <PreviewGrid items={[
           { title: "Soul moment", body: "The assistant refuses to explain profit decline because profit is not yet defined." },
@@ -25,16 +25,26 @@ export default function CaseStudyPage() {
         <div className="grid gap-4 lg:grid-cols-2">
           <CaseSection title="1. What problem is this solving?" body="PMs ask business data questions in natural language, but generic AI can answer without checking metric definitions, abnormal dates, SQL scope, or analyst review requirements." />
           <CaseSection title="2. Who are the target users?" body="AI data assistant PMs, Agent Skill PMs, data product managers, product operations teams, growth PMs, lifecycle PMs, and data analysts." />
-          <CaseSection title="3. Why is this not just a chatbot?" body="The product turns questions into governed workflows: metric registry lookup, honest refusal, definition request, analyst review, triage, and product ops iteration." />
+          <CaseSection title="3. Why is this not just a chatbot?" body="The product turns questions into governed workflows: metric registry lookup, honest refusal, definition request, analyst review, triage, ops iteration, and impact simulation." />
           <CaseSection title="4. What is the core user journey?" body="Ask a question, detect missing metric governance, submit a definition request, approve the metric, then ask again and receive an answer grounded in the approved definition." />
-          <CaseSection title="5. What are the key product mechanisms?" body="Honest refusal, Metric Registry, Agent Skill Gallery, Daily Triage, False Rejection Log, Analyst Review, AI Radar, and case-study documentation." />
+          <CaseSection title="5. What are the key product mechanisms?" body="Honest refusal, Metric Registry, Agent Skill Gallery, Daily Triage, False Rejection Log, Analyst Review, Impact Simulation, AI Radar, and case-study documentation." />
           <CaseSection title="6. How does Agent Skill design appear?" body="Skills are packaged workflows with target user, use case, inputs, output structure, usage count, satisfaction, failure rate, and iteration notes." />
           <CaseSection title="7. How does Metric Registry reduce hallucination risk?" body="The assistant cannot answer undefined metrics. Profit is absent by default, then becomes answerable only after analyst approval." />
           <CaseSection title="8. How does False Rejection Log drive iteration?" body="User corrections such as informal order or ROI phrasing become semantic mapping updates and skill-routing improvements." />
           <CaseSection title="9. How does Analyst Review reduce risky analysis?" body="The GMV story shows human review catching a 6.18 promotion-day SQL scope issue before AI output becomes a decision." />
-          <CaseSection title="10. How would this be measured after launch?" body="DAU, question volume, skill usage, satisfaction, failure rate, low-confidence ratio, human intervention, false rejection rate, and review turnaround." />
+          <CaseSection title="10. How would this be measured after launch?" body="DAU, question volume, skill usage, satisfaction, failure rate, low-confidence ratio, human intervention, false rejection rate, review turnaround, and time to actionable business insight." />
           <CaseSection title="11. What would be built next?" body="Real data connectors, analyst approval roles, evaluation datasets, skill run history, alert integrations, and PRD/export workflows." />
         </div>
+        <Card className="border-indigo-200 bg-indigo-50">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-700">Impact Simulation</p>
+          <h2 className="mt-2 text-2xl font-semibold text-indigo-950">How launch impact would be evaluated</h2>
+          <div className="mt-5 grid gap-3 lg:grid-cols-2">
+            <Fit text="Metrics were chosen around decision speed, GMV anomaly diagnosis, channel ROI, CAC, metric definition cycle time, and AI answer adoption." />
+            <Fit text="Each metric maps to a product mechanism: Daily Triage, Agent Skills, Metric Registry, Analyst Review, and honest refusal trace." />
+            <Fit text="All numbers are mock simulation data for portfolio storytelling, not real production results." />
+            <Fit text="After a real launch, these would be measured through event tracking, skill run logs, analyst review timestamps, and business KPI monitoring." />
+          </div>
+        </Card>
         <Card className="border-emerald-200 bg-emerald-50">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">JD Fit</p>
           <h2 className="mt-2 text-2xl font-semibold text-emerald-950">How this project maps to the role</h2>
