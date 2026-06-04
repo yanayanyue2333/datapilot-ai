@@ -20,7 +20,7 @@ export function FalseRejectionLogCard({ item }: { item: FalseRejectionCase }) {
     <Card>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-rose-600">False rejection</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-rose-600">False Rejection Log / 误拒日志</p>
           <h3 className="mt-2 text-base font-semibold text-slate-950">{item.originalQuestion}</h3>
         </div>
         <UserCorrectionBadge status={item.status} />
@@ -34,7 +34,7 @@ export function FalseRejectionLogCard({ item }: { item: FalseRejectionCase }) {
       </div>
       <div className="mt-4 flex items-center gap-2 rounded-md border border-slate-200 bg-white p-3 text-sm text-slate-600">
         <MessageSquareWarning className="h-4 w-4 text-blue-600" />
-        Impacted Skill: {item.impactedSkill}
+        影响的 Agent Skill：{item.impactedSkill}
       </div>
     </Card>
   );

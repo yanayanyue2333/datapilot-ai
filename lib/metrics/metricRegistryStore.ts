@@ -10,7 +10,7 @@ export const approvedProfitDefinition: MetricDefinition = {
   name: "profit",
   key: "profit",
   displayName: "利润",
-  description: "Operating gross profit for internal product analysis.",
+  description: "用于内部产品分析的经营毛利口径。",
   formula: "revenue - marketing_cost - refund_amount - fulfillment_cost",
   owner: "Data Analytics",
   grain: "daily",
@@ -18,9 +18,9 @@ export const approvedProfitDefinition: MetricDefinition = {
   dataSource: "orders_daily, finance_daily, marketing_daily",
   dataSources: ["orders_daily", "finance_daily", "marketing_daily"],
   aliases: ["利润", "profit", "经营毛利", "毛利"],
-  caveat: "This is operating gross profit, not financial net profit. It does not include fixed costs, tax, or payroll expenses.",
+  caveat: "当前使用的是经营毛利口径，不等于财务净利润；不包含固定成本、税费或薪酬费用。",
   status: "active",
-  lastReviewedAt: "2026-06-01"
+  lastReviewedAt: "2026-06-01",
 };
 
 export type ApprovedMetricDefinitionInput = Omit<MetricDefinition, "id" | "name" | "status" | "lastReviewedAt" | "grain" | "dimensions" | "dataSource"> & {
@@ -90,7 +90,7 @@ export const useMetricRegistryStore = create<MetricRegistryStore>()(
           aliases: approvedDefinition.aliases,
           caveat: approvedDefinition.caveat,
           status: "active",
-          lastReviewedAt: new Date().toISOString().slice(0, 10)
+          lastReviewedAt: new Date().toISOString().slice(0, 10),
         };
 
         set((state) => ({
@@ -102,13 +102,13 @@ export const useMetricRegistryStore = create<MetricRegistryStore>()(
             {
               id: `review-${requestId}-${Date.now()}`,
               requestId,
-              reviewer: "Analyst",
+              reviewer: "分析师",
               action: "approved",
-              comment: `Approved ${definition.displayName} with formula: ${definition.formula}`,
-              createdAt: new Date().toISOString()
+              comment: `已批准 ${definition.displayName}，公式：${definition.formula}`,
+              createdAt: new Date().toISOString(),
             },
-            ...state.reviewActions
-          ]
+            ...state.reviewActions,
+          ],
         }));
       },
       rejectMetricRequest: (requestId, reason) => {
@@ -118,32 +118,32 @@ export const useMetricRegistryStore = create<MetricRegistryStore>()(
             {
               id: `review-${requestId}-${Date.now()}`,
               requestId,
-              reviewer: "Analyst",
+              reviewer: "分析师",
               action: "rejected",
               comment: reason,
-              createdAt: new Date().toISOString()
+              createdAt: new Date().toISOString(),
             },
-            ...state.reviewActions
-          ]
+            ...state.reviewActions,
+          ],
         }));
       },
       addMetricDefinition: (definition) => {
         set((state) => ({
           definitions: state.definitions.some((item) => matchesMetric(item, definition.name))
             ? state.definitions.map((item) => (matchesMetric(item, definition.name) ? definition : item))
-            : [...state.definitions, definition]
+            : [...state.definitions, definition],
         }));
       },
       findMetricDefinition: (metricKeyOrAlias) => get().definitions.find((definition) => matchesMetric(definition, metricKeyOrAlias)),
-      canAnswerQuestion: (question) => Boolean(get().findMetricDefinition(inferMetricFromQuestion(question)))
+      canAnswerQuestion: (question) => Boolean(get().findMetricDefinition(inferMetricFromQuestion(question))),
     }),
     {
       name: "datapilot-metric-registry",
       partialize: (state) => ({
         definitions: state.definitions,
         requests: state.requests,
-        reviewActions: state.reviewActions
-      })
-    }
-  )
+        reviewActions: state.reviewActions,
+      }),
+    },
+  ),
 );

@@ -27,8 +27,8 @@ export function ImpactChart({ title, description, data, unit }: ImpactChartProps
             <YAxis tick={{ fontSize: 12 }} />
             <Tooltip formatter={(value) => [`${value}${unit}`, ""]} />
             <Legend />
-            <Bar dataKey="Before" fill="#94a3b8" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="After" fill="#2563eb" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="Before" name="上线前" fill="#94a3b8" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="After" name="上线后" fill="#2563eb" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

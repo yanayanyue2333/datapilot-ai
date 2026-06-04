@@ -10,23 +10,23 @@ export function HonestRefusalCard({ refusal }: { refusal: HonestRefusal }) {
           <AlertTriangle className="h-5 w-5" />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">Honest Refusal</p>
-          <h2 className="mt-2 text-lg font-semibold text-slate-950">I cannot answer this directly yet.</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">Honest Refusal / 诚实拒答</p>
+          <h2 className="mt-2 text-lg font-semibold text-slate-950">我暂时不能直接回答这个问题。</h2>
           <p className="mt-3 text-sm leading-6 text-slate-600">{refusal.reason}</p>
         </div>
       </div>
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
         <div className="rounded-md bg-slate-50 p-4">
-          <h3 className="text-sm font-semibold text-slate-950">Missing metric definition</h3>
+          <h3 className="text-sm font-semibold text-slate-950">缺失的指标口径</h3>
           <p className="mt-2 text-sm text-slate-600">{refusal.missingMetric}</p>
         </div>
         <div className="rounded-md bg-slate-50 p-4">
-          <h3 className="text-sm font-semibold text-slate-950">Data team confirmation needed</h3>
+          <h3 className="text-sm font-semibold text-slate-950">需要数据团队确认</h3>
           <p className="mt-2 text-sm leading-6 text-slate-600">{refusal.requiredConfirmation}</p>
         </div>
       </div>
       <div className="mt-4 rounded-md bg-slate-50 p-4">
-        <h3 className="text-sm font-semibold text-slate-950">Alternative analysis available</h3>
+        <h3 className="text-sm font-semibold text-slate-950">可先进行的替代分析</h3>
         <ul className="mt-3 space-y-2">
           {refusal.alternativeAnalysis.map((item) => (
             <li key={item} className="text-sm leading-6 text-slate-600">{item}</li>

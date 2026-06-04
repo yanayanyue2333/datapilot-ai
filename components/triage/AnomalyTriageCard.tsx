@@ -17,10 +17,10 @@ export function AnomalyTriageCard({ anomaly, selected, onDrilldown }: { anomaly:
     <Card className={selected ? "border-blue-300 shadow-soft" : undefined}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Detected anomaly</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">检测到异常</p>
           <h3 className="mt-2 text-lg font-semibold text-slate-950">{anomaly.title}</h3>
         </div>
-        <span className={anomaly.impact === "High" ? "rounded-full bg-rose-100 px-2.5 py-1 text-xs text-rose-700" : "rounded-full bg-amber-100 px-2.5 py-1 text-xs text-amber-700"}>{anomaly.impact}</span>
+        <span className={anomaly.impact === "High" ? "rounded-full bg-rose-100 px-2.5 py-1 text-xs text-rose-700" : "rounded-full bg-amber-100 px-2.5 py-1 text-xs text-amber-700"}>{anomaly.impact === "High" ? "高影响" : "中影响"}</span>
       </div>
       <div className="mt-4 flex flex-wrap gap-2">
         {anomaly.affectedMetrics.map((metric) => (
@@ -28,8 +28,8 @@ export function AnomalyTriageCard({ anomaly, selected, onDrilldown }: { anomaly:
         ))}
       </div>
       <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-        <p><span className="font-medium text-slate-950">Initial signal:</span> {anomaly.initialSignal}</p>
-        <p><span className="font-medium text-slate-950">Recommended next step:</span> {anomaly.recommendedNextStep}</p>
+        <p><span className="font-medium text-slate-950">初始信号：</span>{anomaly.initialSignal}</p>
+        <p><span className="font-medium text-slate-950">建议下一步：</span>{anomaly.recommendedNextStep}</p>
       </div>
       <p className="mt-4 rounded-md bg-slate-50 p-3 text-sm leading-6 text-slate-600">点击继续拆解，我会带你从渠道、用户分群、转化漏斗三层继续下钻。</p>
       <div className="mt-4 grid gap-2 sm:grid-cols-2">

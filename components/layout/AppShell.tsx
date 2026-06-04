@@ -3,17 +3,17 @@ import { BarChart3, Bot, ClipboardCheck, Gauge, Home, LibraryBig, Radar, Setting
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/assistant", label: "Assistant", icon: Bot },
-  { href: "/daily-triage", label: "Daily Triage", icon: Gauge },
-  { href: "/skills", label: "Skills", icon: Sparkles },
-  { href: "/metric-registry", label: "Metric Registry", icon: LibraryBig },
-  { href: "/review", label: "Review", icon: ClipboardCheck },
-  { href: "/ops", label: "Ops", icon: BarChart3 },
-  { href: "/impact", label: "Impact", icon: TrendingUp },
-  { href: "/ai-radar", label: "AI Radar", icon: Radar },
+  { href: "/", label: "首页", icon: Home },
+  { href: "/assistant", label: "AI 数据助手", icon: Bot },
+  { href: "/daily-triage", label: "每日数据分诊", icon: Gauge },
+  { href: "/skills", label: "Agent Skill", icon: Sparkles },
+  { href: "/metric-registry", label: "指标口径库", icon: LibraryBig },
+  { href: "/review", label: "审核中心", icon: ClipboardCheck },
+  { href: "/ops", label: "产品运营", icon: BarChart3 },
+  { href: "/impact", label: "上线效果模拟", icon: TrendingUp },
+  { href: "/ai-radar", label: "AI 产品雷达", icon: Radar },
   { href: "/prd", label: "PRD", icon: Settings2 },
-  { href: "/case-study", label: "Case Study", icon: ShieldCheck }
+  { href: "/case-study", label: "项目案例", icon: ShieldCheck }
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -23,7 +23,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="flex h-16 items-center border-b border-slate-200 px-6">
           <div>
             <p className="text-sm font-semibold text-slate-950">DataPilot AI</p>
-            <p className="text-xs text-slate-500">Responsible data assistant</p>
+            <p className="text-xs text-slate-500">负责任的 AI 数据助手</p>
           </div>
         </div>
         <nav className="space-y-1 p-3">
@@ -37,7 +37,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </aside>
       <div className="lg:pl-64">
         <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-slate-200 bg-white/90 px-5 backdrop-blur">
-          <div className="text-sm font-medium text-slate-700">AI data product foundation</div>
+          <div className="text-sm font-medium text-slate-700">AI 数据产品作品集</div>
           <div className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">Mock MVP</div>
         </header>
         <main className="mx-auto max-w-7xl px-5 py-8">{children}</main>

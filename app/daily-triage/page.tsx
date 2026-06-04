@@ -5,7 +5,7 @@ import { DailyTriageIntro } from "@/components/triage/DailyTriageIntro";
 export default function DailyTriagePage() {
   return (
     <>
-      <PageHeader title="Daily Triage" description="A daily operating workflow for PMs to scan business movement, detect anomalies, and decide which questions need deeper analysis." />
+      <PageHeader title="每日数据分诊" description="面向产品经理的每日数据工作台：发现异常、继续拆解、形成假设、推荐动作，并创建后续复盘任务。" />
       <div className="space-y-6">
         <DailyTriageIntro />
         <DailyTriageDesk />

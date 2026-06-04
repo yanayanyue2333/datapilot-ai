@@ -1,64 +1,89 @@
 # DataPilot AI
 
-DataPilot AI is a responsible AI data assistant that knows when not to answer, turns missing metric definitions into governance workflows, and converts data anomalies into actionable triage tasks.
+DataPilot AI 是一个负责任的 AI 数据助手作品集项目。它不会在指标未定义时编造业务结论，而是把缺失口径转化为可审核、可入库、可追踪的产品治理流程。
 
-## Live Demo
+## 在线演示
 
 - Live demo: [https://datapilot-ai-dusky.vercel.app](https://datapilot-ai-dusky.vercel.app)
 - Impact Simulation: [https://datapilot-ai-dusky.vercel.app/impact](https://datapilot-ai-dusky.vercel.app/impact)
 - AI Radar page: [https://datapilot-ai-dusky.vercel.app/ai-radar](https://datapilot-ai-dusky.vercel.app/ai-radar)
 
-## GitHub Repository
+## GitHub 仓库
 
 GitHub repo: [https://github.com/yanayanyue2333/datapilot-ai](https://github.com/yanayanyue2333/datapilot-ai)
 
-## Screenshots
-
-Screenshots: _Add portfolio screenshots here after capturing the flows in `SCREENSHOT_CHECKLIST.md`._
-
-## Tech Stack
+## 技术栈
 
 - Next.js 14 App Router
 - TypeScript
 - Tailwind CSS
-- shadcn-style local UI primitives
-- Zustand with localStorage persistence
-- Recharts for mock impact charts
-- Mock mode by default, no backend required
+- shadcn 风格本地 UI primitives
+- Zustand + localStorage 持久化
+- Recharts mock 效果图表
+- 默认 mock 模式，无需后端
 
-## Best Demo Path
+## 推荐演示路径
 
-1. Open `/assistant` and ask `为什么本月利润下降？`.
-2. Show honest refusal because `profit / 利润` is missing.
-3. Submit the metric definition request.
-4. Approve it in `/review`.
-5. Confirm it appears in `/metric-registry`.
-6. Ask the same question again in `/assistant` and show the governed answer.
-7. Open `/daily-triage`, `/ops`, `/review`, `/impact`, and `/case-study` for the portfolio highlights.
+1. 打开 `/assistant`，提问：`为什么本月利润下降？`
+2. 展示因为 `profit / 利润` 缺失而触发的诚实拒答。
+3. 提交指标口径申请。
+4. 在 `/review` 审批利润口径。
+5. 在 `/metric-registry` 确认 profit / 利润 已进入指标口径库。
+6. 回到 `/assistant` 再问同一个问题，展示基于经营毛利口径的受治理回答。
+7. 继续查看 `/daily-triage`、`/ops`、`/review`、`/impact` 和 `/case-study` 的产品机制亮点。
 
-For a scripted walkthrough, see `DEMO_GUIDE.md`.
+更完整的讲解脚本见 `DEMO_GUIDE.md`。
 
-## Target Role Fit
+## 目标岗位匹配
 
-This project is tailored for:
+- AI 数据助手产品经理
+- Agent Skill 产品经理
+- 数据产品经理
+- AI SaaS 产品经理
+- 产品运营 / 产品分析实习岗位
 
-- AI Data Assistant Product Manager
-- Agent Skill Product Manager
-- Data Product Manager
-- AI SaaS Product Manager
-- Product Operations / Product Analytics Intern
+## 产品亮点
 
-## Key Product Highlights
+- 当指标口径缺失时诚实拒答，而不是幻觉式回答。
+- Metric Registry 审批闭环：从用户申请到分析师审核，再到口径入库。
+- Daily Triage 工作流：异常发现、下钻拆解、假设形成、建议动作和复盘任务。
+- Product Ops 看板：False Rejection Log、语义映射更新和产品迭代信号。
+- Analyst Review 机制：在 SQL 范围、异常日期和业务 caveat 上提供人工审核。
+- Agent Skill Gallery：展示技能使用次数、满意度、失败率和迭代记录。
+- Impact Simulation：用明确标注的 mock 数据说明上线成功指标和业务影响评估框架。
 
-- Honest refusal when metric definitions are missing
-- Metric Registry approval loop from user request to analyst approval
-- Daily Triage workflow for anomaly -> drilldown -> hypothesis -> recommendation -> follow-up task
-- Product Ops dashboard with False Rejection Log and semantic mapping updates
-- Analyst Review safety mechanism for SQL scope, abnormal dates, and business caveats
-- Agent Skill Gallery with usage, satisfaction, failure rate, and iteration metadata
-- Impact Simulation page with clearly labeled mock before/after success metrics
+## 核心产品机制
 
-## Local Run Commands
+- 自然语言 AI 数据助手与产品级 Analysis Trace
+- 带 owner、formula、aliases、data sources、caveats 和状态的 Metric Registry
+- 面向未定义或含糊指标的 Honest Refusal
+- 可复用产品分析工作流的 Agent Skill Gallery
+- 面向高风险结论的 Analyst Review 队列
+- 基于误拒和用户纠正的 Product Ops 反馈闭环
+- 用于上线效果讲述的 Impact Simulation
+
+## Impact Simulation
+
+Impact Simulation 页面使用清晰标注的 mock 数据，说明 DataPilot AI 会如何评估上线成功。选择这些指标是因为它们直接对应产品机制：分析耗时和 GMV 异常定位耗时对应 Daily Triage，ROI 和 CAC 对应 Agent Skill 与增长运营，指标口径确认周期对应 Metric Registry 与 Analyst Review，答案采纳率对应诚实拒答、caveat 和产品级 Analysis Trace。
+
+本项目中的数字均为作品集模拟数据，不代表真实商业结果。真实上线后，可以通过产品事件、Agent Skill 运行日志、分析师审核时间戳、语义映射更新和业务 KPI 监控来衡量。
+
+## 页面概览
+
+- `/`：作品集首页和推荐演示路径
+- `/assistant`：诚实拒答与受治理回答体验
+- `/daily-triage`：每日数据分诊工作流
+- `/skills`：Agent Skill Gallery
+- `/skills/[id]`：技能详情页
+- `/metric-registry`：指标口径库和已审批 profit 状态
+- `/review`：指标审批闭环和 GMV 纠错案例
+- `/ops`：产品运营看板和误拒学习闭环
+- `/impact`：上线效果模拟和成功指标框架
+- `/ai-radar`：AI 产品研究记录
+- `/prd`：PRD 工作区
+- `/case-study`：项目案例和 JD Fit
+
+## 本地运行
 
 ```bash
 npm install
@@ -67,126 +92,21 @@ npm run lint
 npm run build
 ```
 
-## Why This Project Is Different
+## 部署说明
 
-DataPilot AI is not a generic chatbot or a static BI dashboard.
-
-- It does not hallucinate undefined metrics.
-- It turns user questions into metric governance assets.
-- It uses analyst review for risky data analysis.
-- It learns from false rejections and user corrections.
-- It frames BI as a workflow, not a static dashboard.
-- It defines launch success metrics through a mock Impact Simulation rather than claiming real results.
-
-## Core Product Mechanisms
-
-- Natural language data assistant with product-level analysis trace
-- Metric Registry with owners, formulas, aliases, data sources, caveats, and status
-- Honest refusal for undefined or ambiguous metrics
-- Agent Skill Gallery for repeatable product analytics workflows
-- Analyst review queue for risky or misleading findings
-- Product operations feedback loop for false rejections and quality metrics
-- Impact Simulation for launch success metric storytelling
-
-## Product Mechanism Highlights
-
-### Daily Triage
-
-DataPilot AI treats daily business review as an action workflow. The flow moves from anomaly detection to drilldown, cause hypothesis, recommendation, and follow-up task creation. This demonstrates how an AI data assistant can guide PMs through ambiguous business movement instead of only displaying KPI cards.
-
-### False Rejection Learning Loop
-
-The Product Ops dashboard shows how user corrections become semantic mapping updates. When users say things like `单量走得有点疲` or `投放是不是亏了`, the product learns to map business language to orders decline analysis and channel ROI analysis. This improves Agent Skill routing and business-language understanding over time.
-
-### Analyst Review Safety Mechanism
-
-The Analyst Review queue demonstrates how human review catches SQL scope mistakes, abnormal event dates, metric ambiguity, and sample bias. The GMV review story shows an AI analysis overstating growth because it included the 6.18 promotion day, then revises the conclusion after analyst correction.
-
-### Impact Simulation
-
-The Impact Simulation page uses clearly labeled mock data to show how DataPilot AI would evaluate launch success. The metrics were chosen because they map directly to product mechanisms: analysis time and GMV diagnosis time map to Daily Triage, ROI and CAC map to Agent Skills and growth operations, metric definition cycle time maps to Metric Registry and Analyst Review, and answer adoption maps to honest refusal, caveats, and product-level trace.
-
-These numbers are mock simulation data for portfolio storytelling, not real business results. After a real launch, the same framework would be measured through product events, skill run logs, analyst review timestamps, semantic mapping updates, and business KPI monitoring.
-
-### Job Description Fit
-
-These mechanisms support AI data assistant iteration, Agent Skill design, user insight synthesis, product operations, cross-functional review with data teams, and post-launch business impact evaluation. They show the product manager can design beyond a chat UI: defining governance loops, evaluation signals, review workflows, operational learning mechanisms, and success metrics.
-
-## Page Overview
-
-- `/`: portfolio landing page and recommended demo flow
-- `/assistant`: honest refusal and governed answer experience
-- `/daily-triage`: daily PM anomaly triage workflow
-- `/skills`: Agent Skill Gallery
-- `/skills/[id]`: skill detail page
-- `/metric-registry`: governed metric definitions and approved profit state
-- `/review`: metric approval loop and GMV correction story
-- `/ops`: product operations dashboard and false rejection learning loop
-- `/impact`: mock impact simulation and success metric framework
-- `/ai-radar`: AI product research notes
-- `/prd`: PRD workspace placeholder
-- `/case-study`: portfolio narrative and JD fit
-
-## Data Model Overview
-
-The domain model includes metric definitions, metric requests, review actions, data questions, AI answers, analysis trace steps, agent skills, skill runs, skill evaluations, user research insights, usage logs, false rejection logs, analysis reviews, AI radar items, PRD sections, and case study sections.
-
-## Agent Skill Design
-
-Skills are treated as productized workflows with target users, use cases, input parameters, output structures, usage counts, satisfaction scores, failure rates, and iteration notes.
-
-## Metric Registry Governance
-
-The Metric Registry is the source of truth. It contains GMV, revenue, orders, paid orders, conversion rate, retention rate, CAC, and ROI. Profit is intentionally missing in the default mock data so the honest refusal and approval loop can be demonstrated.
-
-## Honest Refusal Mechanism
-
-When required metric definitions are missing, DataPilot AI refuses to answer directly, explains the missing governance asset, suggests alternative analysis paths using available metrics, and offers a CTA to submit a metric definition request.
-
-## Analyst Review And Human-In-The-Loop Design
-
-The review page supports both metric definition approval and analysis correction. The GMV correction story shows a realistic issue: the AI analysis included the 6.18 promotion day and overstated natural GMV growth.
-
-## Product Operations Feedback Loop
-
-The ops surface tracks DAU, question count, skill usage, satisfaction, failure rate, low-confidence answer ratio, human intervention rate, top failed question types, recent iteration notes, and false rejection logs.
-
-## Deployment Readiness
-
-The project runs in mock mode by default.
-
-- No required secrets
-- No external database
-- No real API calls
-- No real LLM calls
-- Optional API placeholders are documented in `.env.example`
-
-## Vercel Deployment
-
-The project is deployed on Vercel:
+项目已部署到 Vercel：
 
 - Production URL: [https://datapilot-ai-dusky.vercel.app](https://datapilot-ai-dusky.vercel.app)
 - GitHub source: [https://github.com/yanayanyue2333/datapilot-ai](https://github.com/yanayanyue2333/datapilot-ai)
 
-No environment variables are required for the current MVP.
+当前 MVP 不需要环境变量，不调用真实 LLM、不依赖外部数据库。
 
-The repository also includes `vercel.json` with the same deployment defaults:
+## 简历要点
 
-```json
-{
-  "framework": "nextjs",
-  "installCommand": "npm install",
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next"
-}
-```
-
-## Resume Bullet Points
-
-- Designed a responsible AI data assistant that refuses undefined metric analysis instead of hallucinating business conclusions.
-- Built an Agent Skill product foundation with metric governance, human review, product operations feedback, and portfolio-ready UI.
-- Modeled realistic AI data product domain entities, including Metric Registry, analysis trace, analyst review, skill evaluation, and false rejection logs.
-- Built a Daily Triage workflow that turns anomalies into drilldowns, hypotheses, recommendations, and follow-up tasks.
-- Designed a false rejection learning loop where user corrections update semantic mappings and improve Agent Skill routing.
-- Created an Analyst Review safety mechanism that catches SQL scope mistakes and abnormal-date bias before AI analysis informs product decisions.
+- 设计负责任的 AI 数据助手，在指标未定义时诚实拒答，避免编造业务结论。
+- 搭建 Agent Skill 产品底座，覆盖指标治理、人机审核、产品运营反馈和作品集级 UI。
+- 建模 Metric Registry、Analysis Trace、Analyst Review、Skill Evaluation、False Rejection Log 等 AI 数据产品核心实体。
+- 设计 Daily Triage 工作流，将业务异常转化为下钻路径、原因假设、建议动作和复盘任务。
+- 设计误拒学习闭环，将用户纠正转化为语义映射更新并提升 Agent Skill 路由质量。
+- 创建 Analyst Review 安全机制，在 AI 分析影响产品决策前识别 SQL 范围错误和异常日期偏差。
 - 设计 Impact Simulation 上线效果模拟模块，围绕 GMV 异常定位、渠道 ROI、CAC、分析耗时、指标口径确认周期等指标建立产品成功指标体系，模拟评估 AI 数据助手对业务决策效率和增长运营的潜在影响。

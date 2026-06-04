@@ -19,7 +19,7 @@ export function MetricRequestCTA({ metricName }: { metricName: string }) {
       requestedBy: "Business User",
       businessQuestion: "为什么本月利润下降？",
       sourceQuestion: "为什么本月利润下降？",
-      reason: "用户需要分析本月利润下降原因，但当前 Metric Registry 缺少利润口径",
+      reason: "用户需要分析本月利润下降原因，但当前指标口径库缺少利润口径",
       proposedDefinition: "revenue - marketing_cost - refund_amount - fulfillment_cost",
       status: "pending",
       createdAt: new Date().toISOString()
@@ -34,17 +34,17 @@ export function MetricRequestCTA({ metricName }: { metricName: string }) {
           {submitted ? <CheckCircle2 className="h-4 w-4" /> : <FilePlus2 className="h-4 w-4" />}
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-blue-950">{submitted ? "Metric request submitted" : "Submit metric definition request"}</h3>
+          <h3 className="text-sm font-semibold text-blue-950">{submitted ? "口径申请已提交" : "提交指标口径申请"}</h3>
           <p className="mt-1 text-sm leading-6 text-blue-900">
-            {submitted ? "The profit definition request is now waiting in Analyst Review." : `Create a request for data team review before DataPilot AI uses ${metricName} in business analysis.`}
+            {submitted ? "profit / 利润 的口径申请已进入审核中心，等待分析师确认。" : `在 DataPilot AI 使用 ${metricName} 进行业务分析前，先提交给数据团队审核。`}
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <button className="inline-flex h-9 items-center rounded-md bg-blue-600 px-3 text-sm font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70" type="button" onClick={onSubmit} disabled={submitted}>
-              {submitted ? "Submitted" : "Submit request"}
+              {submitted ? "已提交" : "提交口径申请"}
             </button>
             {submitted ? (
               <Link className="inline-flex h-9 items-center rounded-md border border-blue-200 bg-white px-3 text-sm font-medium text-blue-700 transition hover:bg-blue-100" href="/review">
-                Go to review
+                前往审核中心
               </Link>
             ) : null}
           </div>
