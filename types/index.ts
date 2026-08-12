@@ -205,3 +205,71 @@ export interface CaseStudySection {
   narrative: string;
   artifact: string;
 }
+
+export type EvidenceLanguage = "sql" | "python";
+export type EvidenceReviewStatus = "mock" | "review_required" | "approved";
+export type MonitoringStatus = "healthy" | "watch" | "incident";
+
+export interface EvidenceQuery {
+  id: string;
+  title: string;
+  language: EvidenceLanguage;
+  source: string;
+  owner: string;
+  grain: "daily" | "weekly" | "event" | "user";
+  metricKeys: string[];
+  code: string;
+  resultPreview: string[];
+  reviewStatus: EvidenceReviewStatus;
+}
+
+export interface FunnelStepEvidence {
+  id: string;
+  label: string;
+  users: number;
+  conversionFromPrevious: number | null;
+  baselineConversion: number | null;
+  deltaVsBaseline: number | null;
+  diagnosis: string;
+}
+
+export interface AnomalyContribution {
+  id: string;
+  segment: string;
+  contribution: number;
+  shareOfDrop: number;
+  note: string;
+}
+
+export interface PythonDiagnosisEvidence {
+  id: string;
+  title: string;
+  notebookPath: string;
+  method: string;
+  window: string;
+  code: string;
+  findings: string[];
+  contributions: AnomalyContribution[];
+  confidence: "low" | "medium" | "high";
+  reviewNote: string;
+}
+
+export interface MonitoringSignal {
+  id: string;
+  metricKey: string;
+  label: string;
+  value: string;
+  threshold: string;
+  status: MonitoringStatus;
+  owner: string;
+  lastCheckedAt: string;
+  action: string;
+}
+
+export interface EvidenceArtifact {
+  id: string;
+  title: string;
+  route: string;
+  purpose: string;
+  screenshotHint: string;
+}

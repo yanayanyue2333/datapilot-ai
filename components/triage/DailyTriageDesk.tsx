@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { funnelEvidence } from "@/data/mock-evidence";
+import { FunnelEvidencePanel } from "@/components/evidence/FunnelEvidencePanel";
 import { AnomalyTriageCard, type TriageAnomaly } from "@/components/triage/AnomalyTriageCard";
 import { DrilldownPath } from "@/components/triage/DrilldownPath";
 import { TriageNextActionPanel } from "@/components/triage/TriageNextActionPanel";
@@ -25,6 +27,7 @@ export function DailyTriageDesk() {
       {selected ? (
         <>
           <DrilldownPath />
+          <FunnelEvidencePanel steps={funnelEvidence} />
           <TriageNextActionPanel />
         </>
       ) : null}

@@ -1,6 +1,8 @@
 import { PageHeader } from "@/components/shared/PageHeader";
 import { PreviewGrid } from "@/components/shared/PreviewGrid";
 import { Card } from "@/components/ui/card";
+import { EvidenceArtifactIndex } from "@/components/evidence/EvidenceArtifactIndex";
+import { DeliveryEvidenceLinks } from "@/components/case-study/DeliveryEvidenceLinks";
 
 export default function CaseStudyPage() {
   return (
@@ -13,6 +15,8 @@ export default function CaseStudyPage() {
           { title: "审核纠错", body: "分析师发现 6.18 大促日导致 GMV 异常放大，并修正业务结论。" },
           { title: "运营学习", body: "误拒日志会沉淀为语义映射更新和 Agent Skill 迭代 backlog。" }
         ]} />
+        <DeliveryEvidenceLinks />
+        <EvidenceArtifactIndex />
         <Card className="border-blue-200 bg-blue-50">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">产品机制亮点</p>
           <h2 className="mt-2 text-2xl font-semibold text-blue-950">从 AI 回答到可运营的数据产品</h2>

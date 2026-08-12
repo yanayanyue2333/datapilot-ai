@@ -1,5 +1,7 @@
 import { Activity, AlertTriangle, Gauge, MessageSquare, MousePointerClick, ShieldCheck, Sparkles, ThumbsUp } from "lucide-react";
+import { monitoringSignals } from "@/data/mock-evidence";
 import { usageLogs } from "@/data/mock-ops";
+import { MetricMonitoringPanel } from "@/components/evidence/MetricMonitoringPanel";
 import { Card } from "@/components/ui/card";
 import { FalseRejectionLogCard, type FalseRejectionCase } from "@/components/ops/FalseRejectionLogCard";
 
@@ -94,6 +96,7 @@ export function ProductOpsDashboard() {
           </div>
         </Card>
       </div>
+      <MetricMonitoringPanel signals={monitoringSignals} />
       <section>
         <Card className="mb-4 border-blue-200 bg-blue-50">
           <h2 className="text-xl font-semibold text-blue-950">本周被用户纠正的误拒</h2>
